@@ -1,10 +1,10 @@
-package org.example.test.Member.Controller;
+package org.example.kCloak.Member.Controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.test.Member.DTO.MemberRequestDTO;
-import org.example.test.Member.DTO.MemberResponseDTO;
-import org.example.test.Member.Entity.Member;
-import org.example.test.Member.Service.MemberService;
+import org.example.kCloak.Member.DTO.MemberRequestDTO;
+import org.example.kCloak.Member.DTO.MemberResponseDTO;
+import org.example.kCloak.Member.Entity.Member;
+import org.example.kCloak.Member.Service.MemberService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

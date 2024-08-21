@@ -1,4 +1,4 @@
-package org.example.test.Member.Entity;
+package org.example.kCloak.Member.Entity;
 
 
 import lombok.*;

@@ -1,4 +1,4 @@
-package org.example.test.Member.DTO;
+package org.example.kCloak.Member.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

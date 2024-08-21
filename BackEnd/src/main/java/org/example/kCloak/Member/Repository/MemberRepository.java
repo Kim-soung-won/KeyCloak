@@ -1,6 +1,6 @@
-package org.example.test.Member.Repository;
+package org.example.kCloak.Member.Repository;
 
-import org.example.test.Member.Entity.Member;
+import org.example.kCloak.Member.Entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,9 +1,9 @@
-package org.example.test.Member.Service;
+package org.example.kCloak.Member.Service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.test.Member.DTO.MemberResponseDTO;
-import org.example.test.Member.Entity.Member;
-import org.example.test.Member.Repository.MemberRepository;
+import org.example.kCloak.Member.DTO.MemberResponseDTO;
+import org.example.kCloak.Member.Entity.Member;
+import org.example.kCloak.Member.Repository.MemberRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
