@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 # APT 리포지토리 업데이트 및 JDK 설치
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata && \
-    apt-get install -y openjdk-11-jdk openssh-server curl zip unzip git vim && \
+    apt-get install -y openjdk-17-jdk openssh-server curl zip unzip git vim && \
     apt-get clean
 
 # 한국 시간대 설정
