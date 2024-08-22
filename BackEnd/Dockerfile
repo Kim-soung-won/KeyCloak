@@ -1,12 +1,11 @@
 FROM ubuntu:20.04
 #SSH 서버 설치
-
-# APT 리포지토리 업데이트 및 JDK 설치
-RUN apt-get update && \
-    apt-get install -y openjdk-11-jdk openssh-server curl zip unzip git vim && \
-    apt-get clean
-
+RUN apt-get update
+RUN apt-get install -y openjdk-11-jdk
+RUN apt-get install -y openssh-server
+RUN apt-get install -y curl zip unzip git vim
 RUN curl -s "https://get.sdkman.io" | bash
+RUN apt-get update
 
 RUN bash -c "source /root/.sdkman/bin/sdkman-init.sh && sdk install gradle 8.8"
 
