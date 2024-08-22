@@ -1,5 +1,8 @@
-const url = "http://localhost:5151";
-const urlNoPort = "http://localhost";
+// const url = "http://localhost:5151";
+// const urlNoPort = "http://localhost";
+
+const url = "http://175.45.204.119:5151";
+const urlNoPort = "http://175.45.204.119";
 
 const jsonHeader = {
     "Content-Type": "application/json",
