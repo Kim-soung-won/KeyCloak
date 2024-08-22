@@ -2,6 +2,7 @@ package org.example.kCloak.Member.Entity;
 
 
 import lombok.*;
+import org.example.kCloak.Member.Entity.Enum.Role;
 
 import javax.persistence.*;
 
@@ -25,4 +26,8 @@ public class Member {
 
     @Column(name="member_pwd", nullable = false)
     private String memberPwd;
+
+    @Column(name="role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }
