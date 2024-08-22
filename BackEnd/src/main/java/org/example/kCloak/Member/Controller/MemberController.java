@@ -40,6 +40,11 @@ public class MemberController {
         );
     }
 
+    @GetMapping("/okok")
+    public String okok(){
+        return "okok";
+    }
+
     @GetMapping("/test")
     public ResponseEntity<MemberResponseDTO> test(Principal principal){
         return ResponseEntity.ok().body(new MemberResponseDTO(

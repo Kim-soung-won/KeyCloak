@@ -46,7 +46,7 @@ public class SecurityConfig {
                 );
         http
                 .authorizeRequests()
-                    .antMatchers("/signup","/login").permitAll()
+                    .antMatchers("/signup","/login", "/okok").permitAll()
                     .anyRequest().authenticated()
                 .and()
                 .userDetailsService(userDetailService)
