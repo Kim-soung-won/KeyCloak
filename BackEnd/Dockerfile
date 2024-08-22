@@ -21,7 +21,7 @@ WORKDIR /work
 
 # JAR 파일을 컨테이너에 복사
 # (예: ./build/libs/your-application.jar 경로를 사용한다고 가정)
-COPY ./build/libs/BackEnd-1.0-SNAPSHOT.jar /work/BackEnd-1.0-SNAPSHOT.jar
+COPY ./BackEnd/build/libs/BackEnd-1.0-SNAPSHOT.jar /work/BackEnd-1.0-SNAPSHOT.jar
 
 # JAR 파일을 실행
 ENTRYPOINT ["java", "-jar", "/work/BackEnd-1.0-SNAPSHOT.jar"]
