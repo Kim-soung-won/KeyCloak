@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 const LoginComp = lazy(() => import("../pages/Login/components/LoginComp"));
 const SignUpComp = lazy(() => import("../pages/SignUp/components/SignUpComp"));
+const Test = lazy(() => import("../pages/test"));
 
 const root = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const root = createBrowserRouter([
     {
         path:"/join",
         element: <Suspense><SignUpComp/></Suspense>
+    },
+    {
+        path:"/test",
+        element: <Suspense><Test/></Suspense>
     }
 ])
 

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { url, jsonHeader } from "../../../utils/single";
-
-
-
+import { url, urlNoPort } from "../../../utils/single";
 
 const LoginComp = () => {
 
@@ -31,17 +28,21 @@ const LoginComp = () => {
                 url: `${url}/login`,
                 method: "POST",
                 data: formData,
-                headers: jsonHeader
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Access-Control-Allow-Origin': `${urlNoPort}:3131`
+                },
+                withCredentials: true
             });
+            console.log(response);
             if (response.status === 200) {
                 alert("로그인 성공");
-                
+                navigate("/test");
             }
         } catch (error) {
             console.log(error);
             alert("로그인 실패");
         }
-    
     }
 
     const letSignUp = () => {
