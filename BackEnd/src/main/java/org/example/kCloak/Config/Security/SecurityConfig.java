@@ -49,18 +49,15 @@ public class SecurityConfig {
                     .antMatchers("/signup","/login").permitAll()
                     .anyRequest().authenticated()
                 .and()
+                .userDetailsService(userDetailService)
                 .formLogin()
                     .loginProcessingUrl("/login") //로그인 시도하는 URL, Page로 하면 안됨
-                    .permitAll()
+                    .successHandler(new CustomAuthenticationSuccessHandler())
                     .and()
                 .logout()
                     .logoutUrl("/logout")
                     .permitAll()
-                    .and()
-                .rememberMe()
-                    .key("uniqueAndSecret")
-                    .rememberMeParameter("remember-me")
-                    .userDetailsService(userDetailService);
+                    .and();
         return http.build();
     }
 

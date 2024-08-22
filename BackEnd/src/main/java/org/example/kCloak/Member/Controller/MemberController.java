@@ -41,8 +41,10 @@ public class MemberController {
     }
 
     @GetMapping("/test")
-    public ResponseEntity<String> test(Principal principal){
-        System.out.println(principal.getName());
-        return ResponseEntity.ok().body("test");
+    public ResponseEntity<MemberResponseDTO> test(Principal principal){
+        return ResponseEntity.ok().body(new MemberResponseDTO(
+                200,
+                "성공"
+        ));
     }
 }

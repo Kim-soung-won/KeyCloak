@@ -17,8 +17,11 @@ public class UserDetailService implements UserDetailsService {
     private final MemberRepository memberRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String memberEmail) throws UsernameNotFoundException {
-        Member member = memberRepository.findByMemberEmail(memberEmail).orElseThrow(null);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("username::::::::::::::::::::::::::::::::"+username);
+        Member member = memberRepository.findByMemberEmail(username).orElseThrow(null);
+        System.out.println("id::::::::::::::::::::::::::::::::::"+member.getMemberEmail());
+        System.out.println("11111111111111111111111111111111111");
         return new CustomUserDetails(member);
     }
 }
