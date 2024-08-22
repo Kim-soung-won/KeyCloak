@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 #SSH 서버 설치
 RUN apt-get update
-RUN apt-get install -y openjdk-17-jdk
+RUN apt-get install -y openjdk-11-jdk
 RUN apt-get install -y openssh-server
 RUN apt-get install -y curl zip unzip git vim
 RUN curl -s "https://get.sdkman.io" | bash
