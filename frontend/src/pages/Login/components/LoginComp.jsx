@@ -37,7 +37,7 @@ const LoginComp = () => {
             console.log(response);
             if (response.status === 200) {
                 alert("로그인 성공");
-                navigate("/test");
+                navigate("/menu");
             }
         } catch (error) {
             console.log(error);
