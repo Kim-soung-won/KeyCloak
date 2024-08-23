@@ -32,7 +32,7 @@ public class AuthSSO {
         System.out.println("authToken = " + authToken);
 
         String authServiceUrl = "http://localhost:5151/auth/check";
-        String response = restTemplate.getForObject(authServiceUrl + "?token=" + authToken, String.class);
+        String response = restTemplate.getForObject(authServiceUrl + "?htoken=" + authToken, String.class);
 
         if ("valid".equals(response)) {
             System.out.println("인증 성공");
