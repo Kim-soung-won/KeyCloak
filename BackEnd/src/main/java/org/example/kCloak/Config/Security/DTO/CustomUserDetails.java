@@ -23,7 +23,7 @@ public class CustomUserDetails implements UserDetails {
     // 권한 확인
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_"+member.getRole()));
+        authorities.add(new SimpleGrantedAuthority("ROLE_"+member.getRole().getRoleName()));
         return authorities;
     }
 

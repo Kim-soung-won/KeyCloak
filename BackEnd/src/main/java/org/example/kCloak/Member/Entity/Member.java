@@ -2,7 +2,7 @@ package org.example.kCloak.Member.Entity;
 
 
 import lombok.*;
-import org.example.kCloak.Member.Entity.Enum.Role;
+import org.example.kCloak.Roles.Entity.Roles;
 
 import javax.persistence.*;
 
@@ -27,7 +27,7 @@ public class Member {
     @Column(name="member_pwd", nullable = false)
     private String memberPwd;
 
-    @Column(name="role")
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role")
+    private Roles role;
 }

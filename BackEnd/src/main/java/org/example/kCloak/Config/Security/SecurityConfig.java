@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 
@@ -27,6 +28,7 @@ import java.util.Collections;
 public class SecurityConfig {
 
     private final UserDetailService userDetailService;
+    private final String COOKIENAME;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -46,13 +48,13 @@ public class SecurityConfig {
                 );
         http
                 .authorizeRequests()
-                    .antMatchers("/signup","/login", "/okok").permitAll()
+                    .antMatchers("/signup", "/login", "/okok", "/auth/check").permitAll()
                     .anyRequest().authenticated()
                 .and()
                 .userDetailsService(userDetailService)
                 .formLogin()
                     .loginProcessingUrl("/login") //로그인 시도하는 URL, Page로 하면 안됨
-                    .successHandler(new CustomAuthenticationSuccessHandler())
+                    .successHandler(new CustomAuthenticationSuccessHandler(COOKIENAME))
                     .and()
                 .logout()
                     .logoutUrl("/logout")
@@ -64,5 +66,38 @@ public class SecurityConfig {
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    private final AuthenticationEntryPoint unauthorizedEntryPoint =
+            //사용자가 인증되지 않은 상태에서 보호된 리소스에 접근할 때 호출
+            (request, response, authException) -> {
+                //응답을 401로 설정하고 메시지를 담는다.
+                ErrorResponse fail = new ErrorResponse(HttpStatus.UNAUTHORIZED, "로그인을 해주세여");
+                response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                String json = new ObjectMapper().writeValueAsString(fail);
+                response.setContentType(MediaType.APPLICATION_JSON_VALUE); //응답의 타입을 json으로 설정
+                PrintWriter writer = response.getWriter();
+                writer.write(json);
+                writer.flush();
+            };
+
+    private final AccessDeniedHandler accessDeniedHandler =
+            //사용자가 권한이 없는 상태에서 보호된 리소스에 접근할 때 호출
+            (request, response, accessDeniedException) -> {
+                //응답을 403으로 설정하고 메시지를 담는다.
+                ErrorResponse fail = new ErrorResponse(HttpStatus.FORBIDDEN, "권한이 없어요");
+                response.setStatus(HttpStatus.FORBIDDEN.value());
+                String json = new ObjectMapper().writeValueAsString(fail);
+                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+                PrintWriter writer = response.getWriter();
+                writer.write(json);
+                writer.flush();
+            };
+
+    @Getter
+    @RequiredArgsConstructor
+    public class ErrorResponse {
+        private final HttpStatus status;
+        private final String message;
     }
 }
