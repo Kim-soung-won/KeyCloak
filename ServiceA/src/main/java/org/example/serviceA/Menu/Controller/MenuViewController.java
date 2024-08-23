@@ -18,6 +18,6 @@ public class MenuViewController {
     @GetMapping("/menu")
     // 인증 확인 테스트
     public String menu(HttpServletRequest request){
-        return authSSO.AuthSSO(request) ? "menu" : "error";
+        return authSSO.authSSO(request) ? "menu" : "error";
     }
 }
