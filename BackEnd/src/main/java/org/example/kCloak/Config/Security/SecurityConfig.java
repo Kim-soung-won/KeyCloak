@@ -10,13 +10,12 @@ import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 
 import java.io.PrintWriter;
@@ -47,8 +46,11 @@ public class SecurityConfig {
                     })
                 );
         http
+                .sessionManagement()
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http
                 .authorizeRequests()
-                    .antMatchers("/signup", "/login", "/okok", "/auth/check").permitAll()
+                    .antMatchers("/signup", "/login", "/okok", "/auth/check", "/logout").permitAll()
                     .anyRequest().authenticated()
                 .and()
                 .userDetailsService(userDetailService)
@@ -58,7 +60,7 @@ public class SecurityConfig {
                     .and()
                 .logout()
                     .logoutUrl("/logout")
-                    .permitAll()
+                    .addLogoutHandler(new CustomLogoutHandler(COOKIENAME))
                     .and();
         return http.build();
     }

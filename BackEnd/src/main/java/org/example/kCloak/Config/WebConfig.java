@@ -18,6 +18,4 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowCredentials(true)
                 .allowedHeaders("*");// 모든 HTTP 헤더 허용
     }
-
-
 }
