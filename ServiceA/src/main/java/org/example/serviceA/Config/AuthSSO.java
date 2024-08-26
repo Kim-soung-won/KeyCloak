@@ -31,7 +31,6 @@ public class AuthSSO {
             }
         }
         System.out.println("authToken = " + authToken);
-
         String response = restTemplate.getForObject(AuthURL + "?htoken=" + authToken, String.class);
 
         if ("valid".equals(response)) {
