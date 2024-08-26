@@ -15,6 +15,7 @@ public class AuthSSO {
 
     private final String COOKIENAME;
     private final RestTemplate restTemplate;
+    private final String AuthURL;
 
     // SSO 서버에 요청을 통한 인증 확인
     public boolean authSSO(HttpServletRequest request){
@@ -31,8 +32,7 @@ public class AuthSSO {
         }
         System.out.println("authToken = " + authToken);
 
-        String authServiceUrl = "http://localhost:5151/auth/check";
-        String response = restTemplate.getForObject(authServiceUrl + "?htoken=" + authToken, String.class);
+        String response = restTemplate.getForObject(AuthURL + "?htoken=" + authToken, String.class);
 
         if ("valid".equals(response)) {
             System.out.println("인증 성공");
