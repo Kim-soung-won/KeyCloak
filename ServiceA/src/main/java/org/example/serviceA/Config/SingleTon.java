@@ -13,6 +13,7 @@ public class SingleTon {
 
     @Bean
     public String AuthURL(){
-        return "http://localhost:5151/auth/check";
+        return "http://175.45.204.119:5151/auth/check";
+//        return "http://localhost:5151/auth/check";
     }
 }
