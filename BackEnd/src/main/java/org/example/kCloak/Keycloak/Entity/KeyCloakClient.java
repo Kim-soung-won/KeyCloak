@@ -40,4 +40,10 @@ public class KeyCloakClient {
 
     @Column(name = "created_who")
     private String createdWho;
+
+    public void updateClient(String name, String description){
+        this.clientName = name;
+        this.clientDescription = description;
+        this.updatedAt = LocalDateTime.now();
+    }
 }
