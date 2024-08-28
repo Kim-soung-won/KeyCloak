@@ -6,7 +6,7 @@ import org.example.kCloak.Member.DTO.MemberResponseDTO;
 import org.example.kCloak.Member.Entity.Member;
 import org.example.kCloak.Member.Repository.MemberRepository;
 import org.example.kCloak.Roles.Service.RolesService;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
     private final RolesService rolesService;
 
     @Transactional(readOnly = true)
@@ -38,7 +38,7 @@ public class MemberService {
         Member member = Member.builder()
                 .memberEmail(requst.getMemberEmail())
                 .memberName(requst.getMemberName())
-                .memberPwd(passwordEncoder.encode(requst.getMemberPwd()))
+                .memberPwd(requst.getMemberPwd())
                 .role(rolesService.findById(3L))
                 .build();
 

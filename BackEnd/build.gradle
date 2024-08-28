@@ -34,8 +34,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    testImplementation 'org.springframework.security:spring-security-test'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    testImplementation 'org.springframework.security:spring-security-test'
 
     implementation 'org.postgresql:postgresql:42.5.0' // 최신 버전으로 수정
 
@@ -49,6 +49,10 @@ dependencies {
 
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
+
+//    implementation 'org.keycloak:keycloak-spring-boot-starter:15.0.2'
+//    implementation 'org.keycloak:keycloak-spring-security-adapter:15.0.2'
 }
 
 test {
